@@ -104,6 +104,8 @@ A soma de vida, estamina e eitr já percorre a lista inteira. Não precisou de c
 
 A pasta entra em plugins sem linha no `mods.yml`, para o gerenciador não extrair um zip antigo por cima. Não há pacote em inglês.
 
+A 1.0.1 troca o ícone e o texto passa a dizer que é de cliente. Só no seu jogo. O limite de comidas não mudou.
+
 ## O que já estava certo e não foi mexido
 
 - Nado Rápido: Ctrl olha para baixo para mergulhar, olha para cima para subir, soltar o Ctrl segura a profundidade, Espaço volta à superfície, para no fundo. A velocidade sobe com a habilidade Nado.

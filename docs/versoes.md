@@ -15,7 +15,7 @@ Três lugares diferentes, de propósito.
 | Herança de Atributos | yuri.HerancaDeAtributos | FundeAtributo | 1.0.16 | 1.0.16 |
 | Rota do Baú (pacote Baurapido) | yuri.RotaDoBau | RotaDoBau | 1.4.6 | 1.4.7, texto |
 | CraftFree | yuri.CraftFree | CraftFree | 1.0.0 | 1.0.0 |
-| Seis Comidas | yuri.SeisComidas | SeisComidas | 1.0.0 | 1.0.0 |
+| Seis Comidas | yuri.SeisComidas | SeisComidas | 1.0.1 | 1.0.1 |
 | Portal Universal | yuri.PortalUniversal | PortalUniversal | 1.0.4 | 1.0.5, texto |
 | Monstros do Rio | yuri.MonstrosDoRio | MonstrosDoRio | 1.0.14 | 1.0.15, texto |
 | Poção Livre | yuri.PocaoLivre | PocaoLivre | 1.0.4 | 1.0.5, texto |

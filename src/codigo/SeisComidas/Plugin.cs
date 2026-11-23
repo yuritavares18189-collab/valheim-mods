@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace SeisComidas
 {
-    [BepInPlugin("yuri.SeisComidas", "Seis Comidas", "1.0.0")]
+    [BepInPlugin("yuri.SeisComidas", "Seis Comidas", "1.0.1")]
     public class Plugin : BaseUnityPlugin
     {
         public static ConfigEntry<bool> Ligado;
@@ -17,10 +17,10 @@ namespace SeisComidas
 
         private void Awake()
         {
-            Ligado = Config.Bind("Geral", "Ligado", true, "Ate seis comidas diferentes ao mesmo tempo. A mesma comida continua uma vez. So no seu jogo.");
+            Ligado = Config.Bind("Geral", "Ligado", true, "Ate seis comidas diferentes ao mesmo tempo. A mesma comida continua uma vez. E de cliente. So no seu jogo.");
             Comidas = Config.Bind("Geral", "Comidas", 6, new ConfigDescription("Quantas comidas diferentes ao mesmo tempo.", new AcceptableValueRange<int>(3, 8)));
             new Harmony("yuri.SeisComidas").PatchAll();
-            Logger.LogInfo("Seis Comidas 1.0.0");
+            Logger.LogInfo("Seis Comidas 1.0.1");
         }
 
         public static int Limite()
