@@ -10,6 +10,8 @@ Tecla F7. A janela lista a peça e os valores que podem passar.
 
 Roupa (elmo, peitoral, calça, capa, luva) passa o efeito. O efeito fica na peça que recebeu.
 
+A veste de ossos malditos, a cabeça de urso, o chapéu comemorativo e o chapéu de pescador passam o conjunto para a roupa que está equipada. As quatro peças ficam na bolsa. Entram a fúria (vida, vigor, a fraqueza física e o dano do conjunto), o uso de vigor em casa e a pescaria com o nado. Trocar a roupa e entrar de novo leva o mesmo conjunto para a roupa nova, se as quatro peças ainda estiverem na bolsa.
+
 Escudo com escudo guarda, na peça que fica:
 
 - aparar
@@ -18,7 +20,7 @@ Escudo com escudo guarda, na peça que fica:
 - força de defesa, se for maior
 - efeito de parada perfeita, quando existe
 
-O dado fica na chave `yuri.funde` do item, com 13 campos separados por `|`: fogo, gelo, raio, veneno, espírito, resistências, equipar, ataque, bloqueio, defesa, aparar, parada, adrenalina.
+O dado fica na chave `yuri.funde` do item, com 14 campos separados por `|`: fogo, gelo, raio, veneno, espírito, resistências, equipar, ataque, bloqueio, defesa, aparar, parada, adrenalina, vigor em casa. Registro antigo de 12 ou 13 campos ainda abre.
 
 Na hora de mostrar a carta ou de bloquear, o mod lê o valor gravado. Se for maior que o da peça, usa o gravado. O objeto compartilhado do prefab é restaurado logo em seguida, porque todas as peças daquele tipo usam o mesmo objeto.
 

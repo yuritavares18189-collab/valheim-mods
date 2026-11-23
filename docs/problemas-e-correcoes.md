@@ -32,11 +32,13 @@ O bloqueio gravado é `GetBaseBlockPower`, mostrado como defesa. O campo de for�
 
 O tooltip e o combate leem esses campos direto do `m_shared`. Esse objeto é o mesmo para todo item daquele tipo. O mod sobe o valor só durante a leitura e devolve o original em seguida. Não pode deixar o `m_shared` alterado. Também não pode cortar o multiplicador da habilidade de bloqueio.
 
-O formato gravado tem 13 campos. Save antigo de 12 campos ainda abre. A adrenalina só entra se o registro tiver o décimo terceiro campo.
+O formato gravado tem 14 campos. Save antigo de 12 campos ainda abre. A adrenalina entra no décimo terceiro campo. O vigor em casa entra no décimo quarto, e só é lido se o registro tiver esse campo.
 
 ### O que funcionou
 
 Com a 1.0.16 no jogo, F7 abre a janela, o personagem não anda, não olha e não bate, e Esc fecha. No F1, dentro de Herança de Atributos, Eixo X e Eixo Y mudam essa janela. Melhorar uma peça fundida daqui para a frente guarda a fusão. A subida 1.0.16 no site ficou em Valheim, Mods e Client-side, time Yuri18189.
+
+A 1.0.17 passa a fúria da veste de ossos malditos, a fúria da cabeça de urso, o vigor do chapéu comemorativo e a pescaria do chapéu de pescador para a roupa equipada. As quatro peças continuam na bolsa. A fraqueza física vai junto com a fúria, porque ela faz parte do efeito do conjunto. A subida 1.0.17 no site ficou em Valheim, Mods e Client-side, time Yuri18189.
 
 A carta esperada depois de fundir os dois escudos de metal negro e passar o resultado para o de serpente: aparar 1,5, adrenalina 5, bloqueio pelo menos 104 e força 150, mais a resistência a perfuração que o de serpente já tem. Isso só aparece se a fusão for feita com a versão que já copia o dado.
 

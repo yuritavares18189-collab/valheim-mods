@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace FundeAtributo
 {
-    [BepInPlugin("yuri.HerancaDeAtributos", "Herança de Atributos", "1.0.16")]
+    [BepInPlugin("yuri.HerancaDeAtributos", "Herança de Atributos", "1.0.17")]
     public class Plugin : BaseUnityPlugin
     {
         public static Plugin Inst;
@@ -41,7 +41,7 @@ namespace FundeAtributo
             CampoMelhoria = typeof(InventoryGui).GetField("m_craftUpgradeItem", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
             Harmony harmonia = new Harmony("yuri.HerancaDeAtributos");
             harmonia.PatchAll(typeof(Plugin).Assembly);
-            Logger.LogInfo("Herança de Atributos 1.0.16");
+            Logger.LogInfo("Herança de Atributos 1.0.17");
         }
 
         int LerNumero(string chave, int padrao)
@@ -84,7 +84,74 @@ namespace FundeAtributo
                 Aberto = false;
                 quadroSemPausa = Time.frameCount;
             }
+            PassarConjuntos(Player.m_localPlayer);
             ManterEfeitos(Player.m_localPlayer);
+        }
+
+        static string conjuntosAssinatura;
+
+        static void PassarConjuntos(Player jogador)
+        {
+            if (jogador == null || jogador.GetInventory() == null)
+                return;
+            List<ItemDrop.ItemData> todos = jogador.GetInventory().GetAllItems();
+            if (todos == null || todos.Count == 0)
+                return;
+            string agora = "";
+            int destino = 0;
+            for (int i = 0; i < todos.Count; i++)
+            {
+                ItemDrop.ItemData item = todos[i];
+                if (item == null || !item.m_equipped || Familia(item) != 3)
+                    continue;
+                agora = agora + "|" + item.m_shared.m_name + ":" + item.m_quality.ToString();
+                destino++;
+            }
+            if (destino == 0 || agora == conjuntosAssinatura)
+                return;
+            Bonus extra = new Bonus();
+            int fontes = 0;
+            for (int i = 0; i < todos.Count; i++)
+            {
+                ItemDrop.ItemData item = todos[i];
+                if (!EhConjuntoPedido(item))
+                    continue;
+                extra = Juntar(extra, LerDoItem(item));
+                fontes++;
+            }
+            if (fontes == 0)
+                return;
+            bool mudou = false;
+            for (int i = 0; i < todos.Count; i++)
+            {
+                ItemDrop.ItemData item = todos[i];
+                if (item == null || !item.m_equipped || Familia(item) != 3)
+                    continue;
+                Bonus ja = LerGravado(item);
+                Bonus junto = Juntar(ja, extra);
+                if (junto.equipar != ja.equipar || junto.resistencias != ja.resistencias || Math.Abs(junto.vigorCasa - ja.vigorCasa) > 0.001f)
+                    mudou = true;
+                Gravar(item, junto);
+            }
+            conjuntosAssinatura = agora;
+            if (mudou)
+                Avisar(jogador, "Os conjuntos foram para a armadura que você está usando.");
+        }
+
+        static bool EhConjuntoPedido(ItemDrop.ItemData item)
+        {
+            if (item == null || item.m_shared == null || item.m_shared.m_name == null)
+                return false;
+            string nome = item.m_shared.m_name;
+            if (nome == "$item_chest_berserker_undead")
+                return true;
+            if (nome == "$item_helmet_berserker")
+                return true;
+            if (nome == "$item_helmet_celebration")
+                return true;
+            if (nome == "$item_helmet_fishinghat")
+                return true;
+            return false;
         }
 
         KeyCode LerTecla()
@@ -314,6 +381,8 @@ namespace FundeAtributo
             }
             bonus.equipar = Acrescentar(bonus.equipar, NomeEfeito(item.m_shared.m_equipStatusEffect));
             bonus.equipar = Acrescentar(bonus.equipar, NomeEfeito(item.m_shared.m_setStatusEffect));
+            if (item.m_shared.m_homeItemsStaminaModifier < 0f)
+                bonus.vigorCasa = MaisUtil(bonus.vigorCasa, item.m_shared.m_homeItemsStaminaModifier);
             bonus.ataque = Acrescentar(bonus.ataque, NomeEfeito(item.m_shared.m_attackStatusEffect));
             bonus.bloqueio = Maior(bonus.bloqueio, item.GetBaseBlockPower());
             bonus.defesa = Maior(bonus.defesa, item.GetDeflectionForce());
@@ -321,6 +390,17 @@ namespace FundeAtributo
             bonus.adrenalina = Maior(bonus.adrenalina, item.m_shared.m_perfectBlockAdrenaline);
             bonus.parada = Acrescentar(bonus.parada, NomeEfeito(item.m_shared.m_perfectBlockStatusEffect));
             return bonus;
+        }
+
+        static float MaisUtil(float a, float b)
+        {
+            if (a >= 0f)
+                return b < 0f ? b : a;
+            if (b >= 0f)
+                return a;
+            if (a < b)
+                return a;
+            return b;
         }
 
         static float Maior(float a, float b)
@@ -346,6 +426,7 @@ namespace FundeAtributo
             junto.aparar = Maior(ja.aparar, extra.aparar);
             junto.adrenalina = Maior(ja.adrenalina, extra.adrenalina);
             junto.parada = JuntarNomes(ja.parada, extra.parada);
+            junto.vigorCasa = MaisUtil(ja.vigorCasa, extra.vigorCasa);
             return junto;
         }
 
@@ -439,7 +520,7 @@ namespace FundeAtributo
         {
             if (item.m_customData == null)
                 item.m_customData = new Dictionary<string, string>();
-            item.m_customData[Chave] = Num(bonus.fogo) + "|" + Num(bonus.gelo) + "|" + Num(bonus.raio) + "|" + Num(bonus.veneno) + "|" + Num(bonus.espirito) + "|" + Limpo(bonus.resistencias) + "|" + Limpo(bonus.equipar) + "|" + Limpo(bonus.ataque) + "|" + Num(bonus.bloqueio) + "|" + Num(bonus.defesa) + "|" + Num(bonus.aparar) + "|" + Limpo(bonus.parada) + "|" + Num(bonus.adrenalina);
+            item.m_customData[Chave] = Num(bonus.fogo) + "|" + Num(bonus.gelo) + "|" + Num(bonus.raio) + "|" + Num(bonus.veneno) + "|" + Num(bonus.espirito) + "|" + Limpo(bonus.resistencias) + "|" + Limpo(bonus.equipar) + "|" + Limpo(bonus.ataque) + "|" + Num(bonus.bloqueio) + "|" + Num(bonus.defesa) + "|" + Num(bonus.aparar) + "|" + Limpo(bonus.parada) + "|" + Num(bonus.adrenalina) + "|" + Num(bonus.vigorCasa);
         }
 
         static string Num(float valor)
@@ -482,6 +563,8 @@ namespace FundeAtributo
             }
             if (partes.Length >= 13)
                 bonus.adrenalina = Numero(partes[12]);
+            if (partes.Length >= 14)
+                bonus.vigorCasa = Numero(partes[13]);
             return bonus;
         }
 
@@ -822,6 +905,7 @@ namespace FundeAtributo
             public float aparar;
             public float adrenalina;
             public string parada;
+            public float vigorCasa;
 
             public bool Tem()
             {
@@ -836,6 +920,8 @@ namespace FundeAtributo
                 if (ataque != null && ataque != "")
                     return true;
                 if (parada != null && parada != "")
+                    return true;
+                if (vigorCasa < -0.001f)
                     return true;
                 return false;
             }
@@ -859,6 +945,8 @@ namespace FundeAtributo
                     texto = Somar(texto, "aparar");
                 if (adrenalina > 0.1f)
                     texto = Somar(texto, "adrenalina " + ((int)adrenalina).ToString());
+                if (vigorCasa < -0.001f)
+                    texto = Somar(texto, "vigor em casa " + ((int)(vigorCasa * 100f)).ToString() + "%");
                 if (resistencias != null && resistencias != "")
                     texto = Somar(texto, NomeRes(resistencias));
                 if (equipar != null && equipar != "")
@@ -1086,6 +1174,29 @@ namespace FundeAtributo
                         melhor = lista[i].m_modifier;
                 }
                 return melhor;
+            }
+        }
+
+        [HarmonyPatch(typeof(Player), "GetEquipmentHomeItemModifier")]
+        static class VigorDaCasa
+        {
+            static void Postfix(Player __instance, ref float __result)
+            {
+                if (Inst == null || !Inst.Ligado.Value || __instance == null || __instance.GetInventory() == null)
+                    return;
+                List<ItemDrop.ItemData> equipados = __instance.GetInventory().GetEquippedItems();
+                float nativo = 0f;
+                float gravado = 0f;
+                for (int i = 0; i < equipados.Count; i++)
+                {
+                    ItemDrop.ItemData item = equipados[i];
+                    if (item == null || item.m_shared == null)
+                        continue;
+                    nativo += item.m_shared.m_homeItemsStaminaModifier;
+                    gravado = MaisUtil(gravado, LerGravado(item).vigorCasa);
+                }
+                if (gravado < -0.001f && gravado < nativo - 0.001f)
+                    __result += gravado;
             }
         }
 

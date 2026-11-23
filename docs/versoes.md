@@ -12,7 +12,7 @@ Três lugares diferentes, de propósito.
 
 | Mod no jogo | GUID | Fonte local | Versão no fonte | No site agora |
 | --- | --- | --- | --- | --- |
-| Herança de Atributos | yuri.HerancaDeAtributos | FundeAtributo | 1.0.16 | 1.0.16 |
+| Herança de Atributos | yuri.HerancaDeAtributos | FundeAtributo | 1.0.17 | 1.0.17 |
 | Rota do Baú (pacote Baurapido) | yuri.RotaDoBau | RotaDoBau | 1.4.6 | 1.4.7, texto |
 | CraftFree | yuri.CraftFree | CraftFree | 1.0.0 | 1.0.0 |
 | Fartura | yuri.Fartura | Fartura | 1.0.1 | 1.0.1 |
@@ -32,7 +32,7 @@ Três lugares diferentes, de propósito.
 
 "Texto" quer dizer que a versão do site subiu, a frase do donate passou a 5 reais, e a DLL publicada é a da versão anterior.
 
-O Herança no yaml do gerenciador continua apontando para 1.0.15. A DLL dessa pasta de cache foi trocada pela 1.0.16, para o gerenciador não voltar o arquivo antigo na próxima extração. O CraftFree está na pasta de plugins sem linha no `mods.yml`, pelo mesmo motivo. Fartura também: a pasta é `Yuri18189-Fartura` e não tem linha no yaml. A pasta antiga `Yuri18189-SeisComidas` saiu do jogo. A página SeisComidas continua no site.
+O Herança no yaml do gerenciador aponta para 1.0.16. A DLL da pasta de plugins e a DLL do cache 1.0.16 foram trocadas pela 1.0.17, para o gerenciador não voltar o arquivo antigo na próxima extração. O site está na 1.0.17. O CraftFree está na pasta de plugins sem linha no `mods.yml`, pelo mesmo motivo. Fartura também: a pasta é `Yuri18189-Fartura` e não tem linha no yaml. A pasta antiga `Yuri18189-SeisComidas` saiu do jogo. A página SeisComidas continua no site.
 
 A Rota do Baú tem duas pastas de plugin com o mesmo GUID: `Yuri18189-Baurapido` e `Yuri-RotaDoBau`. As duas estão com a DLL de 1.4.6. O BepInEx carrega um GUID uma vez. O pacote antigo `Baurapido-Baurapido` fica desligado.
 
