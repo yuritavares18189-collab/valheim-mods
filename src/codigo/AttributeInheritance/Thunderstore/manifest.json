@@ -1,0 +1,9 @@
+{
+  "name": "AttributeInheritance",
+  "version_number": "1.0.5",
+  "website_url": "https://ko-fi.com/yuritavares60974",
+  "description": "In F1 you can change the window width and height. The F7 window does not let the character attack. Only your own game needs this mod. Every 4 dollars on Ko-fi, your idea gets in. Write it in the donate message.",
+  "dependencies": [
+    "denikson-BepInExPack_Valheim-5.4.2350"
+  ]
+}

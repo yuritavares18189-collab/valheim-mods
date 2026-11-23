@@ -1,0 +1,9 @@
+{
+    "name": "TripleDrop",
+    "version_number": "1.0.0",
+    "website_url": "https://thunderstore.io/c/valheim/",
+    "description": "Client-side only. Pickups are tripled. Items from your own death stay at the normal amount. Extra copies stop at your carry weight. Only your own game needs this mod.",
+    "dependencies": [
+        "denikson-BepInExPack_Valheim-5.4.2350"
+    ]
+}

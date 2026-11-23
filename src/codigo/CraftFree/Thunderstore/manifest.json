@@ -1,0 +1,9 @@
+{
+  "name": "CraftFree",
+  "version_number": "1.0.0",
+  "website_url": "https://ko-fi.com/yuritavares60974",
+  "description": "Nas mesas de craft, a receita sai sem o material. A mesa e a receita conhecida continuam valendo. So no seu jogo. A cada 5 reais no Ko-fi, a sua ideia entra. Escreve na mensagem do donate.",
+  "dependencies": [
+    "denikson-BepInExPack_Valheim-5.4.2350"
+  ]
+}

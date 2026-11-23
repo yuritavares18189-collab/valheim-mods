@@ -1,0 +1,9 @@
+{
+    "name": "PocaoLivre",
+    "version_number": "1.0.4",
+    "website_url": "https://thunderstore.io/c/valheim/p/Yuri18189/PocaoLivre/",
+    "description": "Base de hidromel e vinho de cevada que voce ja conhece sai sem gastar material. So no seu jogo. A cada 20 reais no Ko-fi, a sua ideia entra. Escreve na mensagem do donate.",
+    "dependencies": [
+        "denikson-BepInExPack_Valheim-5.4.2350"
+    ]
+}

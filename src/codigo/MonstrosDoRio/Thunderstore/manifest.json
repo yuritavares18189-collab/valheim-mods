@@ -1,0 +1,9 @@
+{
+    "name": "MonstrosDoRio",
+    "version_number": "1.0.14",
+    "website_url": "https://thunderstore.io/c/valheim/p/Yuri18189/MonstrosDoRio/",
+    "description": "Segura o esquerdo e a barra sobe com embalo, solta e ela cai e quica. A faixa verde e maior para acompanhar o peixe. Nao gasta isca. So no seu jogo. A cada 20 reais no Ko-fi, a sua ideia entra. Escreve na mensagem do donate.",
+    "dependencies": [
+        "denikson-BepInExPack_Valheim-5.4.2350"
+    ]
+}

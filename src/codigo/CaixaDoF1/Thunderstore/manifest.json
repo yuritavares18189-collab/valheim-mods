@@ -1,0 +1,9 @@
+{
+  "name": "CaixaDoF1",
+  "version_number": "1.0.0",
+  "website_url": "https://ko-fi.com/yuritavares60974",
+  "description": "No topo do F1, Largura e Altura mudam o tamanho do gerenciador de mods. So no seu jogo. A cada 20 reais no Ko-fi, a sua ideia entra. Escreve na mensagem do donate.",
+  "dependencies": [
+    "denikson-BepInExPack_Valheim-5.4.2350"
+  ]
+}

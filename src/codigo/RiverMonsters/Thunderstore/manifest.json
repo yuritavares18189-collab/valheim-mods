@@ -1,0 +1,9 @@
+{
+  "name": "RiverMonsters",
+  "version_number": "1.0.3",
+  "website_url": "https://ko-fi.com/yuritavares60974",
+  "description": "Hold left and the bar rises, release and it falls and bounces. The green zone is larger so it follows the fish. No bait. Only your own game needs this mod. Every 4 dollars on Ko-fi, your idea gets in. Write it in the donate message.",
+  "dependencies": [
+    "denikson-BepInExPack_Valheim-5.4.2350"
+  ]
+}

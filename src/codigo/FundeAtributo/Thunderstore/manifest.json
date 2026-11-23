@@ -1,0 +1,9 @@
+{
+  "name": "HerancaDeAtributos",
+  "version_number": "1.0.16",
+  "website_url": "https://ko-fi.com/yuritavares60974",
+  "description": "No F1, dentro deste mod, Eixo X e Eixo Y mudam a janela do F7. So no seu jogo. A cada 5 reais no Ko-fi, a sua ideia entra. Escreve na mensagem do donate.",
+  "dependencies": [
+    "denikson-BepInExPack_Valheim-5.4.2350"
+  ]
+}

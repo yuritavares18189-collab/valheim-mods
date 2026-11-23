@@ -1,0 +1,9 @@
+{
+  "name": "Baurapido",
+  "version_number": "1.4.6",
+  "website_url": "https://ko-fi.com/yuritavares60974",
+  "description": "Mover Tudo joga o inventario no bau aberto e nos iguais. Alt+clique esquerdo fixa o item com borda verde. Ctrl+clique direito manda o item ao bau aberto. So no seu jogo. A cada 20 reais no Ko-fi, a sua ideia entra. Escreve na mensagem do donate.",
+  "dependencies": [
+    "denikson-BepInExPack_Valheim-5.4.2350"
+  ]
+}

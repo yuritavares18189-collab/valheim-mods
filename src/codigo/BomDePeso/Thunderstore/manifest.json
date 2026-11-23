@@ -1,0 +1,9 @@
+{
+    "name":  "BomDePeso",
+    "version_number":  "1.0.1",
+    "website_url":  "https://thunderstore.io/c/valheim/",
+    "description":  "Client-side only. The Run skill adds extra carry weight. At Run 50, without the belt, carry starts around 450. With the belt, 600. Only your own game needs this mod.",
+    "dependencies":  [
+                         "denikson-BepInExPack_Valheim-5.4.2350"
+                     ]
+}

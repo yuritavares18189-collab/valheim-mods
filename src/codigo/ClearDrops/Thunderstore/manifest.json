@@ -1,0 +1,9 @@
+{
+    "name": "ClearDrops",
+    "version_number": "1.0.0",
+    "website_url": "https://thunderstore.io/c/valheim/",
+    "description": "Client-side only. Press F9 to clear nearby ground items. Graves, item stands and armor stands stay. Only your own game needs this mod.",
+    "dependencies": [
+        "denikson-BepInExPack_Valheim-5.4.2350"
+    ]
+}

@@ -1,0 +1,9 @@
+{
+    "name": "CarryWeight",
+    "version_number": "1.0.0",
+    "website_url": "https://thunderstore.io/c/valheim/",
+    "description": "Client-side only. The Run skill adds extra carry weight. At Run 100 the extra reaches its maximum. Only your own game needs this mod.",
+    "dependencies": [
+        "denikson-BepInExPack_Valheim-5.4.2350"
+    ]
+}

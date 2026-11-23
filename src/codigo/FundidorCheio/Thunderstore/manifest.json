@@ -1,0 +1,9 @@
+{
+    "name":  "FundidorCheio",
+    "version_number":  "1.0.2",
+    "website_url":  "https://thunderstore.io/c/valheim/",
+    "description":  "Client-side only. The smelter and blast furnace take no coal and hold 100 ore. The charcoal kiln and the forge stay normal. Only your own game needs this mod.",
+    "dependencies":  [
+                         "denikson-BepInExPack_Valheim-5.4.2350"
+                     ]
+}

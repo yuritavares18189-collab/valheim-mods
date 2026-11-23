@@ -1,0 +1,8 @@
+bin/
+obj/
+*.zip
+*.dll
+*.exe
+*.pdb
+*.b64
+Thumbs.db

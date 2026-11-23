@@ -1,0 +1,9 @@
+{
+  "name": "PortalUniversal",
+  "version_number": "1.0.4",
+  "website_url": "https://ko-fi.com/yuritavares60974",
+  "description": "Entrar no portal abre o mapa para escolher o destino. A marca some se o portal sumir. Não muda o nome. Só no seu jogo. A cada 20 reais no Ko-fi, a sua ideia entra. Escreve na mensagem do donate.",
+  "dependencies": [
+    "denikson-BepInExPack_Valheim-5.4.2350"
+  ]
+}

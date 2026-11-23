@@ -1,0 +1,9 @@
+{
+    "name": "WarRooster",
+    "version_number": "1.0.0",
+    "website_url": "https://thunderstore.io/c/valheim/",
+    "description": "Client-side only. Press F8 to challenge another player to a 1v1 with a bet. The button turns PvP on for both. Both fighters need this mod.",
+    "dependencies": [
+        "denikson-BepInExPack_Valheim-5.4.2350"
+    ]
+}
