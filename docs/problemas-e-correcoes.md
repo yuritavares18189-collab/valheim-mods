@@ -106,6 +106,8 @@ A pasta entra em plugins sem linha no `mods.yml`, para o gerenciador não extrai
 
 O primeiro nome, Seis Comidas, ficou curto demais e o ícone tinha a palavra CLIENTE. O nome passou a ser Fartura. A palavra saiu do ícone e do texto. A página antiga continua no site, porque o Thunderstore não apaga um pacote já publicado. Ela não volta para o jogo. O limite de comidas não mudou.
 
+Na 1.0.1 os ícones da comida estavam um em cima do outro. O jogo reorganizava a lista quando entravam lugares novos. Agora a posição dos três primeiros é guardada e os seguintes seguem o mesmo passo, com folga de pelo menos a altura do ícone. Isso é reaplicado o tempo todo, para não voltar a empilhar.
+
 ## O que já estava certo e não foi mexido
 
 - Nado Rápido: Ctrl olha para baixo para mergulhar, olha para cima para subir, soltar o Ctrl segura a profundidade, Espaço volta à superfície, para no fundo. A velocidade sobe com a habilidade Nado.

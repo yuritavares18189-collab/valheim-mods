@@ -21,7 +21,7 @@ Isto é o que ainda vale a pena fazer. Nada desta lista foi feito nesta document
 
 ## Fartura
 
-- Se os ícones extras saírem em cima uns dos outros, o ajuste é o passo entre os lugares na tela. A conta de vida, estamina e eitr não depende desse desenho.
+- A conta de vida, estamina e eitr não depende do desenho dos ícones. A 1.0.1 separa os ícones que estavam um em cima do outro.
 - O CraftFree e a Cozinha Livre não mudam com este mod. Comida continua precisando ser cozinhada. Este mod só abre mais lugares para comer.
 
 ## CraftFree

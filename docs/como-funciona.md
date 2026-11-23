@@ -46,7 +46,7 @@ A mesma comida continua um lugar só. O jogo compara o nome do item: cogumelo ve
 
 A vida, a estamina e o eitr já são somados de cada comida da lista. Com seis lugares dá para juntar comida de vida com comida de mago.
 
-Os ícones extras são cópias dos lugares que o jogo já desenha, enfileirados no mesmo passo dos três primeiros.
+Os ícones extras seguem o mesmo passo dos três primeiros. Se esse passo for menor que o ícone, a folga vira a altura do ícone. A cada quadro a posição é recolocada, para uma comida não ficar em cima da outra.
 
 ## Cozinha Livre
 

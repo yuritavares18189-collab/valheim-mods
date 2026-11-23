@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace SeisComidas
 {
-    [BepInPlugin("yuri.Fartura", "Fartura", "1.0.0")]
+    [BepInPlugin("yuri.Fartura", "Fartura", "1.0.1")]
     public class Plugin : BaseUnityPlugin
     {
         public static ConfigEntry<bool> Ligado;
@@ -20,7 +20,7 @@ namespace SeisComidas
             Ligado = Config.Bind("Geral", "Ligado", true, "Ate seis comidas diferentes ao mesmo tempo. A mesma comida continua uma vez. So no seu jogo.");
             Comidas = Config.Bind("Geral", "Comidas", 6, new ConfigDescription("Quantas comidas diferentes ao mesmo tempo.", new AcceptableValueRange<int>(3, 8)));
             new Harmony("yuri.Fartura").PatchAll();
-            Logger.LogInfo("Fartura 1.0.0");
+            Logger.LogInfo("Fartura 1.0.1");
         }
 
         public static int Limite()
@@ -79,6 +79,16 @@ namespace SeisComidas
     {
         private static int hudId;
         private static bool parou;
+        private static bool guardou;
+        private static bool temRaiz;
+        private static Vector2[] baseIcone;
+        private static Vector2[] baseBarra;
+        private static Vector2[] baseTempo;
+        private static Vector2[] baseRaiz;
+        private static Vector2 passoI;
+        private static Vector2 passoB;
+        private static Vector2 passoT;
+        private static Vector2 passoRaiz;
 
         private static void Prefix(Hud __instance)
         {
@@ -89,22 +99,127 @@ namespace SeisComidas
             {
                 hudId = id;
                 parou = false;
+                guardou = false;
             }
-            if (parou)
-                return;
             int quer = Plugin.Limite();
             Image[] icones = __instance.m_foodIcons;
             Image[] barras = __instance.m_foodBars;
             TMP_Text[] tempos = __instance.m_foodTime;
             if (icones == null || barras == null || tempos == null)
                 return;
-            if (icones.Length >= quer)
-                return;
             if (icones.Length < 2 || barras.Length < 2 || tempos.Length < 2)
                 return;
             if (icones.Length != barras.Length || icones.Length != tempos.Length)
                 return;
-            Crescer(__instance, quer, icones, barras, tempos);
+            Guardar(icones, barras, tempos);
+            if (!parou && icones.Length < quer)
+                Crescer(__instance, quer, icones, barras, tempos);
+            Posicionar(__instance.m_foodIcons, __instance.m_foodBars, __instance.m_foodTime);
+        }
+
+        private static void Guardar(Image[] icones, Image[] barras, TMP_Text[] tempos)
+        {
+            if (guardou)
+                return;
+            int n = icones.Length;
+            baseIcone = new Vector2[n];
+            baseBarra = new Vector2[n];
+            baseTempo = new Vector2[n];
+            baseRaiz = new Vector2[n];
+            temRaiz = true;
+            for (int i = 0; i < n; i++)
+            {
+                baseIcone[i] = icones[i].rectTransform.anchoredPosition;
+                baseBarra[i] = barras[i].rectTransform.anchoredPosition;
+                baseTempo[i] = tempos[i].rectTransform.anchoredPosition;
+                Transform outro = icones[i == 0 ? 1 : 0].transform;
+                Transform raiz = Raiz(icones[i].transform, barras[i].transform, tempos[i].transform, outro);
+                RectTransform rt = raiz == null ? null : raiz.GetComponent<RectTransform>();
+                if (rt == null)
+                {
+                    temRaiz = false;
+                    continue;
+                }
+                baseRaiz[i] = rt.anchoredPosition;
+            }
+            float altoIcone = icones[0].rectTransform.rect.height;
+            float altoBarra = barras[0].rectTransform.rect.height;
+            float altoTempo = tempos[0].rectTransform.rect.height;
+            passoI = Passo(baseIcone[0], baseIcone[1], altoIcone);
+            passoB = Passo(baseBarra[0], baseBarra[1], altoBarra);
+            passoT = Passo(baseTempo[0], baseTempo[1], altoTempo);
+            if (temRaiz)
+            {
+                float alto = altoIcone;
+                if (alto < 16f)
+                    alto = 64f;
+                passoRaiz = Passo(baseRaiz[0], baseRaiz[1], alto);
+            }
+            guardou = true;
+        }
+
+        private static Vector2 Passo(Vector2 a, Vector2 b, float alto)
+        {
+            Vector2 d = b - a;
+            if (alto < 16f)
+                alto = 64f;
+            float minimo = alto + 8f;
+            if (d.magnitude >= minimo * 0.85f)
+                return d;
+            if (d.y > 0.5f)
+                return new Vector2(0f, minimo);
+            if (d.y < -0.5f)
+                return new Vector2(0f, -minimo);
+            if (d.x > 0.5f)
+                return new Vector2(minimo, 0f);
+            if (d.x < -0.5f)
+                return new Vector2(-minimo, 0f);
+            return new Vector2(0f, -minimo);
+        }
+
+        private static Vector2 Onde(int i, Vector2[] bases, Vector2 passo)
+        {
+            if (i < bases.Length)
+                return bases[i];
+            int ult = bases.Length - 1;
+            return bases[ult] + passo * (i - ult);
+        }
+
+        private static void Soltar(Transform t)
+        {
+            if (t == null)
+                return;
+            LayoutGroup grupo = t.GetComponent<LayoutGroup>();
+            if (grupo != null)
+                grupo.enabled = false;
+            ContentSizeFitter fitter = t.GetComponent<ContentSizeFitter>();
+            if (fitter != null)
+                fitter.enabled = false;
+        }
+
+        private static void Posicionar(Image[] icones, Image[] barras, TMP_Text[] tempos)
+        {
+            if (!guardou || icones == null || barras == null || tempos == null)
+                return;
+            if (icones.Length == 0 || icones.Length != barras.Length || icones.Length != tempos.Length)
+                return;
+            Soltar(icones[0].transform.parent);
+            Soltar(barras[0].transform.parent);
+            Soltar(tempos[0].transform.parent);
+            for (int i = 0; i < icones.Length; i++)
+            {
+                Transform outro = icones[i == 0 ? Mathf.Min(1, icones.Length - 1) : 0].transform;
+                Transform raiz = Raiz(icones[i].transform, barras[i].transform, tempos[i].transform, outro);
+                RectTransform rt = raiz == null ? null : raiz.GetComponent<RectTransform>();
+                if (temRaiz && rt != null)
+                {
+                    rt.anchoredPosition = Onde(i, baseRaiz, passoRaiz);
+                    continue;
+                }
+                icones[i].rectTransform.anchoredPosition = Onde(i, baseIcone, passoI);
+                barras[i].rectTransform.anchoredPosition = Onde(i, baseBarra, passoB);
+                tempos[i].rectTransform.anchoredPosition = Onde(i, baseTempo, passoT);
+            }
         }
 
         private static void Crescer(Hud hud, int quer, Image[] icones, Image[] barras, TMP_Text[] tempos)
