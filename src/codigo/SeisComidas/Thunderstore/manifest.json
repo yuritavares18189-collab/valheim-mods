@@ -1,0 +1,9 @@
+{
+  "name": "SeisComidas",
+  "version_number": "1.0.0",
+  "website_url": "https://ko-fi.com/yuritavares60974",
+  "description": "Voce come ate seis comidas diferentes. A mesma comida nao ocupa dois lugares. Ensopado de cervo e de cenoura contam separados. So no seu jogo. A cada 5 reais no Ko-fi, a sua ideia entra. Escreve na mensagem do donate.",
+  "dependencies": [
+    "denikson-BepInExPack_Valheim-5.4.2350"
+  ]
+}

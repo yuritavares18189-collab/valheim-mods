@@ -94,6 +94,16 @@ A troca foi feita no manifesto e no README, com a versão um passo acima, sem re
 
 Funcionou nas subidas conferidas depois do sucesso: o texto novo está no pacote e as categorias ficaram Valheim, Mods e Client-side. A lista do que ainda está com a descrição em inglês está em [versões](versoes.md).
 
+## Seis Comidas
+
+O jogo só deixa três comidas. O limite não está num campo que alguém leia: são duas instruções fixas, uma em `Player.CanEat` e outra em `Player.EatFood`. A primeira recusa a quarta comida. A segunda, se passar, troca a comida mais gasta em vez de abrir um lugar novo. As duas passam a perguntar o número do F1. O padrão é 6, de 3 a 8.
+
+A mesma comida já era recusada pelo nome do item. Cogumelo vermelho continua um lugar. Ensopado de cervo e ensopado de cenoura já eram itens diferentes. Não foi criada categoria.
+
+A soma de vida, estamina e eitr já percorre a lista inteira. Não precisou de conta nova. O que faltava na tela era o desenho: o jogo só tem três ícones. O mod copia o lugar da comida e enfileira os extras no mesmo passo.
+
+A pasta entra em plugins sem linha no `mods.yml`, para o gerenciador não extrair um zip antigo por cima. Não há pacote em inglês.
+
 ## O que já estava certo e não foi mexido
 
 - Nado Rápido: Ctrl olha para baixo para mergulhar, olha para cima para subir, soltar o Ctrl segura a profundidade, Espaço volta à superfície, para no fundo. A velocidade sobe com a habilidade Nado.
