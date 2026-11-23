@@ -22,9 +22,9 @@ A DLL carregada fica em `BepInEx\plugins`. O `mods.yml` diz qual pacote o gerenc
 
 Não se copia uma DLL com o Valheim aberto. O arquivo mapeado não deixa gravar.
 
-Pasta extra sem linha no `mods.yml` não é reextraída. Portal Universal, CraftFree e Seis Comidas estão assim. Isso não vale para apagar pastas que já estão no jogo, com uma exceção: a Caixa do F1 foi removida porque o pedido foi tirá-la.
+Pasta extra sem linha no `mods.yml` não é reextraída. Portal Universal, CraftFree e Fartura estão assim. Isso não vale para apagar pastas que já estão no jogo, com uma exceção: a Caixa do F1 foi removida porque o pedido foi tirá-la.
 
-Seis Comidas troca as duas instruções fixas do número 3, em `CanEat` e em `EatFood`, por uma chamada ao limite do F1. A tela da comida usa `UnityEngine.UI.dll`, `UnityEngine.UIModule.dll` e `Unity.TextMeshPro.dll`.
+Fartura troca as duas instruções fixas do número 3, em `CanEat` e em `EatFood`, por uma chamada ao limite do F1. A tela da comida usa `UnityEngine.UI.dll`, `UnityEngine.UIModule.dll` e `Unity.TextMeshPro.dll`.
 
 ## Site
 

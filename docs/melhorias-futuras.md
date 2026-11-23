@@ -19,7 +19,7 @@ Isto é o que ainda vale a pena fazer. Nada desta lista foi feito nesta document
 - A 1.4.7 do site é a DLL da 1.4.6 com a frase nova. O jogo já tem a 1.4.6. Não há comportamento novo pendente nessa versão.
 - As duas pastas com o mesmo GUID podem ser reduzidas a uma, com o jogo fechado, para não haver dúvida de qual arquivo carrega.
 
-## Seis Comidas
+## Fartura
 
 - Se os ícones extras saírem em cima uns dos outros, o ajuste é o passo entre os lugares na tela. A conta de vida, estamina e eitr não depende desse desenho.
 - O CraftFree e a Cozinha Livre não mudam com este mod. Comida continua precisando ser cozinhada. Este mod só abre mais lugares para comer.

@@ -94,7 +94,7 @@ A troca foi feita no manifesto e no README, com a versão um passo acima, sem re
 
 Funcionou nas subidas conferidas depois do sucesso: o texto novo está no pacote e as categorias ficaram Valheim, Mods e Client-side. A lista do que ainda está com a descrição em inglês está em [versões](versoes.md).
 
-## Seis Comidas
+## Fartura
 
 O jogo só deixa três comidas. O limite não está num campo que alguém leia: são duas instruções fixas, uma em `Player.CanEat` e outra em `Player.EatFood`. A primeira recusa a quarta comida. A segunda, se passar, troca a comida mais gasta em vez de abrir um lugar novo. As duas passam a perguntar o número do F1. O padrão é 6, de 3 a 8.
 
@@ -104,7 +104,7 @@ A soma de vida, estamina e eitr já percorre a lista inteira. Não precisou de c
 
 A pasta entra em plugins sem linha no `mods.yml`, para o gerenciador não extrair um zip antigo por cima. Não há pacote em inglês.
 
-A 1.0.1 troca o ícone e o texto passa a dizer que é de cliente. Só no seu jogo. O limite de comidas não mudou.
+O primeiro nome, Seis Comidas, ficou curto demais e o ícone tinha a palavra CLIENTE. O nome passou a ser Fartura. A palavra saiu do ícone e do texto. A página antiga continua no site, porque o Thunderstore não apaga um pacote já publicado. Ela não volta para o jogo. O limite de comidas não mudou.
 
 ## O que já estava certo e não foi mexido
 

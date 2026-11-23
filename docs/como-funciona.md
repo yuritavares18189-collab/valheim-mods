@@ -38,11 +38,9 @@ Alt + clique esquerdo grava `yuri.fixo` e mostra a borda verde. Ctrl + clique es
 
 Na mesa de craft, a receita que aquela mesa aceita e que o personagem já conhece sai sem gastar o material. A mesa errada não libera. Receita desconhecida não libera. Construir com o martelo continua gastando.
 
-## Seis Comidas
+## Fartura
 
-É de cliente. Só no seu jogo.
-
-O jogo deixa três comidas diferentes. O mod sobe esse limite. O padrão é 6. No F1, a opção Comidas vai de 3 a 8. Desligar volta para as três do jogo.
+O nome no jogo e no site é Fartura. O jogo deixa três comidas diferentes. O mod sobe esse limite. O padrão é 6. No F1, a opção Comidas vai de 3 a 8. Desligar volta para as três do jogo.
 
 A mesma comida continua um lugar só. O jogo compara o nome do item: cogumelo vermelho não ocupa dois lugares. Ensopado de cervo e ensopado de cenoura são itens diferentes e os dois entram. Não existe uma categoria de "ensopado" que junte os dois.
 
